@@ -619,17 +619,22 @@ class CrowdSafetyPipeline:
 # ─────────────────────────────────────────────────────────────────────────────
 
 def main():
+    default_port = int(os.environ.get("PORT", API_PORT))
+    is_headless_env = (os.name != "nt" and not os.environ.get("DISPLAY")) or os.environ.get("HEADLESS", "0") == "1"
+
     parser = argparse.ArgumentParser(
         description="CrowdSafe AI — Intelligent Crowd Safety & Stampede Prevention"
     )
     parser.add_argument("--source", default=None,
                         help="Camera index (0,1,...), video file path, or RTSP URL")
     parser.add_argument("--sim", action="store_true",
+                        default=is_headless_env,
                         help="Run in simulation mode (no camera required)")
     parser.add_argument("--no-window", action="store_true",
+                        default=is_headless_env,
                         help="Run headless (no OpenCV window — web dashboard only)")
-    parser.add_argument("--port", type=int, default=API_PORT,
-                        help=f"Web dashboard port (default {API_PORT})")
+    parser.add_argument("--port", type=int, default=default_port,
+                        help=f"Web dashboard port (default {default_port})")
     args = parser.parse_args()
 
     source = args.source

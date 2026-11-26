@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: crowd-safety-ai
+    runtime: docker
+    plan: free
+    region: oregon
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: HEADLESS
+        value: "1"
+      - key: SIMULATION_MODE
+        value: "True"
+      - key: GEMINI_API_KEY
+        sync: false
