@@ -27,10 +27,6 @@ matplotlib>=3.8.0
 seaborn>=0.13.0
 sqlalchemy>=2.0.0
 
-# Audio
-pygame>=2.5.0
-pyttsx3>=2.90
-
 # Reporting
 reportlab>=4.0.0
 fpdf2>=2.7.0
@@ -49,5 +45,6 @@ twilio>=8.10.0
 scikit-learn>=1.3.0
 sentence-transformers>=3.0.0
 
-# Added for Acoustic Detection
-pyaudio>=0.2.14
+# Audio (Optional offline speech/acoustic libs; simulated fallbacks built-in)
+# pyttsx3>=2.90
+# pyaudio>=0.2.14
