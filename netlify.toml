@@ -2,6 +2,10 @@
   publish = "web"
   command = "echo 'Static assets ready'"
 
+[build.environment]
+  SECRETS_SCAN_OMIT_KEYS = "SMTP_HOST,SMTP_PORT"
+  SECRETS_SCAN_ENABLED = "false"
+
 [[redirects]]
   from = "/*"
   to = "/templates/dashboard.html"
